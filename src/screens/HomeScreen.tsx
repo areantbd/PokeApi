@@ -2,15 +2,11 @@ import { Link } from "react-router-dom"
 import { useInitialStore } from "../zustand-stores/InitialStore.jsx"
 
 function HomeScreen() {
-  const primary = useInitialStore(state => state.primary)
-  const secondary = useInitialStore(state => state.secondary)
-  const background = useInitialStore(state => state.background)
+  
   const setCharmander = useInitialStore(state => state.charmander)
   const setSquirtle = useInitialStore(state => state.squirtle)
   const setBulbasaur = useInitialStore(state => state.bulbasaur)
-  console.log(primary)
-  console.log(secondary)
-  console.log(background)
+
   return (
     <>
     <h3 className="pt-3 text-center">Elige un pokemon</h3>
@@ -30,7 +26,7 @@ function HomeScreen() {
     </div>
     <h1 className="mt-5 text-center">Y ahora...</h1>
     <div className="d-flex mt-3">
-      <Link to={'/pokemons'} className="btn btn-lg btn-outline-secondary mx-auto" >view pokemons</Link>
+      <Link to={'/pokemons'} className="btn btn-lg btn-outline-secondary mx-auto" >Avancemos</Link>
     </div>
     </>
   )
