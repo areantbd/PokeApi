@@ -1,7 +1,11 @@
 
+type Props = {
+  url: string,
+  name: string
+}
 
 
-function PokemonCard({ url, name }) {
+function PokemonCard({ url, name }: Props) {
   return (
     <>
     <h2>
