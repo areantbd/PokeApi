@@ -34,15 +34,22 @@ console.log(pokemonsList)
 
   return (
     <>
-      Pokemons
-      <button onClick={() => setSearchRoute(pokemonsSearch?.previous)} disabled={!pokemonsSearch.previous ? true : false}>Prev</button>
-      <button onClick={() => setSearchRoute(pokemonsSearch?.next)}  disabled={!pokemonsSearch.next ? true : false}>Next</button>
-      {pokemonsList && pokemonsList.map((pokemon) => (
-        <>
-          <PokemonCard url={pokemon.url} name={pokemon.name} />
-          {/* <h5 key={pokemon.name}>{pokemon.name}</h5> */}
-        </>
-      ))}
+      <div className="d-flex gap-5 pt-3 justify-content-center">
+        <button className="btn btn-lg btn-outline-light" onClick={() => setSearchRoute(pokemonsSearch?.previous)} disabled={!pokemonsSearch.previous ? true : false}>Prev</button>
+        <button className="btn btn-lg btn-outline-light" onClick={() => setSearchRoute(pokemonsSearch?.next)}  disabled={!pokemonsSearch.next ? true : false}>Next</button>
+      </div>
+      <div className="d-flex gap-3 flex-wrap justify-content-evenly mt-5 pb-2">
+        {pokemonsList && pokemonsList.map((pokemon) => (
+          <>
+            <PokemonCard url={pokemon.url} name={pokemon.name} key={pokemon.name} />
+            {/* <h5 key={pokemon.name}>{pokemon.name}</h5> */}
+          </>
+        ))}
+      </div>
+      <div className="d-flex gap-5 pb-3 justify-content-center">
+        <button className="btn btn-lg btn-outline-light" onClick={() => setSearchRoute(pokemonsSearch?.previous)} disabled={!pokemonsSearch.previous ? true : false}>Prev</button>
+        <button className="btn btn-lg btn-outline-light" onClick={() => setSearchRoute(pokemonsSearch?.next)}  disabled={!pokemonsSearch.next ? true : false}>Next</button>
+      </div>
     </>
   )
 }
