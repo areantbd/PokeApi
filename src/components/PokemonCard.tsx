@@ -19,7 +19,8 @@ function PokemonCard({ url, name }: Props) {
     type: "",
     experience: "",
     height: "",
-    weight: 0
+    weight: 0,
+    id: 0
   })
 
   useEffect(() => {
@@ -30,7 +31,8 @@ function PokemonCard({ url, name }: Props) {
           type: data.data.types[0].type.name,
           experience: data.data.base_experience,
           height: data.data.height,
-          weight: data.data.weight
+          weight: data.data.weight,
+          id: data.data.id
         })
       })
       .catch(error => console.error(error))
@@ -38,7 +40,12 @@ function PokemonCard({ url, name }: Props) {
 
   console.log(pokemon)
   return (
-    <Card sx={{ width: 345, background: "none" }} className="shadow">
+    <Card sx={{ width: 345, background: "none" }} className="shadow">   
+      <div className="d-flex">
+        <Typography gutterBottom variant="h4" component="div" className="ms-auto me-3 pt-3">
+          {pokemon.id}
+        </Typography>
+      </div>   
       <CardMedia
         sx={{ height: 200 }}
         image={pokemon.image}
