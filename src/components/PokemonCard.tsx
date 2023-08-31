@@ -17,6 +17,7 @@ function PokemonCard({ url, name }: Props) {
   const [pokemon, setPokemon] = useState({
     image: "",
     type: "",
+    type2: "",
     experience: "",
     height: "",
     weight: 0,
@@ -26,9 +27,11 @@ function PokemonCard({ url, name }: Props) {
   useEffect(() => {
     axios.get(url)
       .then((data) => {
+        console.log(data.data)
         setPokemon({
           image: data.data.sprites.front_default,
           type: data.data.types[0].type.name,
+          type2: data.data.types[1]?.type.name,
           experience: data.data.base_experience,
           height: data.data.height,
           weight: data.data.weight,
@@ -38,37 +41,44 @@ function PokemonCard({ url, name }: Props) {
       .catch(error => console.error(error))
   }, [ url ])
 
-  console.log(pokemon)
+  // console.log(pokemon)
   return (
-    <Card sx={{ width: 345, background: "none" }} className="shadow">   
+    <Card sx={{ width: 345, background: "none" }} className="shadow border border-2 border-secondary rounded-3">   
       <div className="d-flex">
-        <Typography gutterBottom variant="h4" component="div" className="ms-auto me-3 pt-3">
-          {pokemon.id}
+        <Typography gutterBottom  component="div" className="ms-auto me-3 mt-3 bg-light rounded-5 px-2 text-danger shadow border border-3 border-dark">
+          <b>
+            {pokemon.id}
+          </b>
         </Typography>
+        {/* <h4 className="ms-auto me-3 pt-3">{pokemon.id}</h4> */}
       </div>   
-      <CardMedia
-        sx={{ height: 200 }}
+      <CardMedia className="bg-dark bg-opacity-10"
+        sx={{ height: 300 }}
         image={pokemon.image}
         title={name}
       />
       <CardContent>
-          <Typography gutterBottom variant="h4" component="div" className="text-center">
+          <Typography gutterBottom variant="h4" component="div" className="text-center fw-bolder text-decoration-underline">
             {name.toUpperCase()}
           </Typography>
         <div className="d-flex justify-content-around">
-          <Typography gutterBottom variant="h5" component="div">
-            Type: {pokemon.type.toUpperCase()}
+          <Typography gutterBottom variant="h5" component="div" className="d-flex flex-column align-items-center">
+            Type: 
+            <div className="d-flex gap-2">
+              <span className="badge  rounded-pill bg-info">{pokemon.type.toUpperCase()}</span> 
+              <span className="badge rounded-pill bg-info">{pokemon.type2?.toUpperCase()}</span>
+            </div>
           </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            Exp: {pokemon.experience}
+          <Typography gutterBottom variant="h5" component="div" className="d-flex flex-column align-items-center">
+            Exp: <b className="badge bg-success rounded-pill px-4">{pokemon.experience}</b>
           </Typography>
         </div>
         <div className="d-flex justify-content-around">
-          <Typography gutterBottom variant="h5" component="div">
-            Height: {pokemon.height}
+          <Typography gutterBottom variant="h5" component="div" className="d-flex flex-column align-items-center">
+            Height: <b className="badge bg-danger rounded-pill px-4">{pokemon.height}</b>
           </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            Weight: {pokemon.weight}
+          <Typography gutterBottom variant="h5" component="div" className="d-flex flex-column align-items-center">
+            Weight: <b className="badge bg-warning rounded-pill px-4">{pokemon.weight}</b>
           </Typography>
         </div>
         {/* <Typography variant="body2" color="text.secondary">

@@ -35,8 +35,8 @@ console.log(pokemonsList)
   return (
     <>
       <div className="d-flex gap-5 pt-3 justify-content-center">
-        <button className="btn btn-lg btn-outline-light" onClick={() => setSearchRoute(pokemonsSearch?.previous)} disabled={!pokemonsSearch.previous ? true : false}>Prev</button>
-        <button className="btn btn-lg btn-outline-light" onClick={() => setSearchRoute(pokemonsSearch?.next)}  disabled={!pokemonsSearch.next ? true : false}>Next</button>
+        <button className="btn btn-lg btn-outline-secondary" onClick={() => setSearchRoute(pokemonsSearch?.previous)} disabled={!pokemonsSearch.previous ? true : false}>Prev</button>
+        <button className="btn btn-lg btn-outline-secondary" onClick={() => setSearchRoute(pokemonsSearch?.next)}  disabled={!pokemonsSearch.next ? true : false}>Next</button>
       </div>
       <div className="d-flex gap-3 flex-wrap justify-content-evenly mt-5 pb-2">
         {pokemonsList && pokemonsList.map((pokemon) => (
@@ -47,8 +47,14 @@ console.log(pokemonsList)
         ))}
       </div>
       <div className="d-flex gap-5 pb-3 justify-content-center">
-        <button className="btn btn-lg btn-outline-light" onClick={() => setSearchRoute(pokemonsSearch?.previous)} disabled={!pokemonsSearch.previous ? true : false}>Prev</button>
-        <button className="btn btn-lg btn-outline-light" onClick={() => setSearchRoute(pokemonsSearch?.next)}  disabled={!pokemonsSearch.next ? true : false}>Next</button>
+        <button className="btn btn-lg btn-outline-secondary" onClick={() => {
+          setSearchRoute(pokemonsSearch?.previous)
+          scrollTo(0, 0)  
+        }} disabled={!pokemonsSearch.previous ? true : false}>Prev</button>
+        <button className="btn btn-lg btn-outline-secondary" onClick={() => {
+          setSearchRoute(pokemonsSearch?.next)
+          scrollTo(0, 0)
+        }}  disabled={!pokemonsSearch.next ? true : false}>Next</button>
       </div>
     </>
   )
