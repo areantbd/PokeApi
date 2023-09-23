@@ -40,10 +40,7 @@ console.log(pokemonsList)
       </div>
       <div className="d-flex gap-3 flex-wrap justify-content-evenly mt-5 pb-2">
         {pokemonsList && pokemonsList.map((pokemon) => (
-          <>
             <PokemonCard url={pokemon.url} name={pokemon.name} key={pokemon.name} />
-            {/* <h5 key={pokemon.name}>{pokemon.name}</h5> */}
-          </>
         ))}
       </div>
       <div className="d-flex gap-5 pb-3 justify-content-center">

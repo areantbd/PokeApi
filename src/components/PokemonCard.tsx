@@ -12,16 +12,26 @@ type Props = {
   name: string
 }
 
+type Pokemon = {
+  image: string | undefined,
+  type: string | null,
+  type2: string | null,
+  experience: string | null,
+  height: string | null,
+  weight: number |null,
+  id: number |null
+}
+
 
 function PokemonCard({ url, name }: Props) {
-  const [pokemon, setPokemon] = useState({
-    image: "",
-    type: "",
-    type2: "",
-    experience: "",
-    height: "",
-    weight: 0,
-    id: 0
+  const [pokemon, setPokemon] = useState<Pokemon>({
+    image: undefined,
+    type: null,
+    type2: null,
+    experience: null,
+    height: null,
+    weight: null,
+    id: null
   })
 
   useEffect(() => {
@@ -54,7 +64,7 @@ function PokemonCard({ url, name }: Props) {
       </div>   
       <CardMedia className="bg-dark bg-opacity-10"
         sx={{ height: 300 }}
-        image={pokemon.image}
+        image={pokemon?.image}
         title={name}
       />
       <CardContent>
@@ -65,8 +75,8 @@ function PokemonCard({ url, name }: Props) {
           <Typography gutterBottom variant="h5" component="div" className="d-flex flex-column align-items-center">
             Type: 
             <div className="d-flex gap-2">
-              <span className="badge  rounded-pill bg-info">{pokemon.type.toUpperCase()}</span> 
-              <span className="badge rounded-pill bg-info">{pokemon.type2?.toUpperCase()}</span>
+              <span className="badge  rounded-pill bg-info">{pokemon?.type?.toUpperCase()}</span> 
+              <span className="badge rounded-pill bg-info">{pokemon?.type2?.toUpperCase()}</span>
             </div>
           </Typography>
           <Typography gutterBottom variant="h5" component="div" className="d-flex flex-column align-items-center">
